@@ -1,16 +1,18 @@
 import _ from 'lodash';
 
+import Immutable from 'immutable';
+
 /**
  * @param {Object} action
  * @param {String} action.data.name
  */
 export let ADD_TASK = (state, action) => {
     return state
-        .push({
+        .push(Immutable.Map({
             id: _.uniqueId(),
             name: action.data.name,
             done: false
-        });
+        }));
 };
 
 /**

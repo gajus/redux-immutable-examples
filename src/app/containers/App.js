@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskForm from './../components/TaskForm';
 import TaskList from './../components/TaskList';
 import selector from './../selector';
 
@@ -12,12 +13,12 @@ import {
 } from 'react-redux';
 
 class App extends React.Component {
-    handleTaskAdd = () => {
-        console.log('handleTaskAdd');
+    handleTaskAdd = (name) => {
+        this.props.dispatch(taskAdd(name));
     };
 
-    handleTaskComplete = () => {
-        console.log('handleTaskComplete');
+    handleTaskComplete = (id) => {
+        this.props.dispatch(taskComplete(id));
     };
 
     render () {
@@ -26,9 +27,11 @@ class App extends React.Component {
         } = this.props;
 
         return <div>
+            <TaskForm
+                onSave={this.handleTaskAdd}
+            />
             <TaskList
                 tasks={tasks}
-                onTaskAdd={this.handleTaskAdd}
                 onTaskComplete={this.handleTaskComplete}
             />
         </div>;
