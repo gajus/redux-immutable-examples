@@ -7,6 +7,7 @@ This app demonstrates:
 * How to make a selector using Immutable data.
 * How to use middleware.
 * How to use [react-hot-reload](https://github.com/gaearon/react-hot-loader).
+* How to structure app using [Canonical Reducer Composition](https://github.com/gajus/canonical-reducer-composition).
 
 To launch the app:
 
