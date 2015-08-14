@@ -6,20 +6,18 @@ import Immutable from 'immutable';
 
 let immutableCreateSelector,
     taskSelector,
-    completeTaskSelector,
-    completeTaskCountSelector;
+    doneTaskSelector;
 
 immutableCreateSelector = createSelectorCreator(Immutable.is);
 
 taskSelector = state => state.get('tasks');
 
-completeTaskSelector = immutableCreateSelector([taskSelector], tasks => tasks.filter(task => task.get('done')));
-
-completeTaskCountSelector = immutableCreateSelector([completeTaskSelector], tasks => tasks.count())
+doneTaskSelector = immutableCreateSelector([taskSelector], tasks => tasks.filter(task => task.get('done')));
 
 export default (state) => {
     return {
         tasks: taskSelector(state),
-        completeTaskCount: completeTaskCountSelector(state)
+        taskCount: taskSelector(state).count(),
+        doneTaskCount: doneTaskSelector(state).count()
     };
 };

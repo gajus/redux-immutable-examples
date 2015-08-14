@@ -1,11 +1,13 @@
 import React from 'react';
 import TaskForm from './../components/TaskForm';
 import TaskList from './../components/TaskList';
+import TaskStats from './../components/TaskStats';
 import selector from './../selector';
 
 import {
     taskAdd,
-    taskComplete
+    taskDone,
+    taskUndone
 } from './../actions';
 
 import {
@@ -17,22 +19,33 @@ class App extends React.Component {
         this.props.dispatch(taskAdd(name));
     };
 
-    handleTaskComplete = (id) => {
-        this.props.dispatch(taskComplete(id));
+    handleTaskDone = (id) => {
+        this.props.dispatch(taskDone(id));
+    };
+
+    handleTaskUndone = (id) => {
+        this.props.dispatch(taskUndone(id));
     };
 
     render () {
         let {
-            tasks
+            tasks,
+            taskCount,
+            doneTaskCount
         } = this.props;
 
-        return <div>
+        return <div id='viewport'>
             <TaskForm
                 onSave={this.handleTaskAdd}
             />
             <TaskList
                 tasks={tasks}
-                onTaskComplete={this.handleTaskComplete}
+                onTaskDone={this.handleTaskDone}
+                onTaskUndone={this.handleTaskUndone}
+            />
+            <TaskStats
+                taskCount={taskCount}
+                undoneTaskCount={taskCount - doneTaskCount}
             />
         </div>;
     }

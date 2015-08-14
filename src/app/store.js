@@ -23,17 +23,22 @@ let reducer,
 state.tasks = [
     {
         id: _.uniqueId(),
-        name: 'a',
+        name: 'foo',
+        done: true
+    },
+    {
+        id: _.uniqueId(),
+        name: 'bar',
         done: false
     },
     {
         id: _.uniqueId(),
-        name: 'c',
+        name: 'baz',
         done: false
     },
     {
         id: _.uniqueId(),
-        name: 'c',
+        name: 'quux',
         done: false
     }
 ];
