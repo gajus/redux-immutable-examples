@@ -20,32 +20,13 @@ let reducer,
     state,
     store;
 
-state = {};
-
-state.tasks = [
-    {
-        id: _.uniqueId(),
-        name: 'foo',
-        done: true
-    },
-    {
-        id: _.uniqueId(),
-        name: 'bar',
-        done: false
-    },
-    {
-        id: _.uniqueId(),
-        name: 'baz',
-        done: false
-    },
-    {
-        id: _.uniqueId(),
-        name: 'quux',
-        done: false
-    }
-];
-
 reducer = combineReducers(reducers);
-store = applyMiddleware(thunk, logger)(createStore)(reducer, Immutable.fromJS(state));
+
+state = Immutable.Map({});
+state = reducer(state, {
+    name: `CONSTRUCT`
+});
+
+store = applyMiddleware(thunk, logger)(createStore)(reducer, state);
 
 export default store;

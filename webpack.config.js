@@ -1,5 +1,6 @@
 var webpack = require('webpack'),
-    devServer;
+    devServer,
+    path = require('path');
 
 devServer = {
     contentBase: __dirname + '/src/endpoint',
@@ -7,7 +8,7 @@ devServer = {
     quiet: false,
     noInfo: false,
     publicPath: '/static/',
-    historyApiFallback: true,
+    historyApiFallback: false,
     host: '127.0.0.1',
     port: 8000,
     hot: true
@@ -58,6 +59,7 @@ module.exports = {
         ]
     },
     resolve: {
+        root: path.resolve(__dirname, 'node_modules'),
         extensions: [
             '',
             '.js'

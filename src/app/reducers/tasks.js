@@ -2,9 +2,35 @@ import _ from 'lodash';
 
 import Immutable from 'immutable';
 
-let TASK_ADD,
+let CONSTRUCT,
+    TASK_ADD,
     TASK_DONE,
     TASK_UNDONE;
+
+CONSTRUCT = () => {
+    return Immutable.fromJS([
+        {
+            id: _.uniqueId(),
+            name: 'foo',
+            done: true
+        },
+        {
+            id: _.uniqueId(),
+            name: 'bar',
+            done: false
+        },
+        {
+            id: _.uniqueId(),
+            name: 'baz',
+            done: false
+        },
+        {
+            id: _.uniqueId(),
+            name: 'quux',
+            done: false
+        }
+    ]);
+};
 
 /**
  * @param {Immutable.List} domain
@@ -57,6 +83,7 @@ TASK_UNDONE = (domain, action) => {
 };
 
 export {
+    CONSTRUCT,
     TASK_ADD,
     TASK_DONE,
     TASK_UNDONE
