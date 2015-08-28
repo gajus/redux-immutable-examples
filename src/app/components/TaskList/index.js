@@ -4,17 +4,21 @@ import Immutable from 'immutable';
 
 export default class extends React.Component {
     static propTypes = {
-            tasks: React.PropTypes.instanceOf(Immutable.List).isRequired
-        };
+        tasks: React.PropTypes.instanceOf(Immutable.List).isRequired
+    };
 
     render () {
-        let {
-                tasks,
-                onTaskDone,
-                onTaskUndone
-            } = this.props;
+        let onTaskDone,
+            onTaskUndone,
+            tasks;
 
-        return <ul>{tasks.map(task =>
+        ({
+            tasks,
+            onTaskDone,
+            onTaskUndone
+        } = this.props);
+
+        return <ul>{tasks.map((task) =>
             <li key={task.get('id')}>
                 <TaskItem
                     id={task.get('id')}

@@ -5,10 +5,10 @@ export default class extends React.Component {
         onSave: React.PropTypes.func.isRequired
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = (event) => {
         let name;
 
-        e.preventDefault();
+        event.preventDefault();
 
         name = this.refs.name.value;
 
@@ -18,10 +18,6 @@ export default class extends React.Component {
     };
 
     render () {
-        let {
-            name
-        } = this.props;
-
         return <form className='component-task-form' onSubmit={this.handleSubmit}>
             <input type='text' ref='name' />
             <button type='submit'>Save</button>

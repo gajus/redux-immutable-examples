@@ -2,15 +2,18 @@ import React from 'react';
 
 export default class extends React.Component {
     static propTypes = {
-            taskCount: React.PropTypes.number.isRequired,
-            undoneTaskCount: React.PropTypes.number.isRequired
-        };
+        taskCount: React.PropTypes.number.isRequired,
+        undoneTaskCount: React.PropTypes.number.isRequired
+    };
 
     render () {
-        let {
-                taskCount,
-                undoneTaskCount,
-            } = this.props;
+        let taskCount,
+            undoneTaskCount;
+
+        ({
+            taskCount,
+            undoneTaskCount
+        } = this.props);
 
         return <div className='component-task-stats'>
             <dl>

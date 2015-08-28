@@ -3,19 +3,24 @@ import classNames from 'classnames';
 
 export default class extends React.Component {
     static propTypes = {
-            id: React.PropTypes.string.isRequired,
-            done: React.PropTypes.bool.isRequired,
-            onTaskDone: React.PropTypes.func.isRequired,
-            onTaskUndone: React.PropTypes.func.isRequired
-        };
+        id: React.PropTypes.string.isRequired,
+        done: React.PropTypes.bool.isRequired,
+        onTaskDone: React.PropTypes.func.isRequired,
+        onTaskUndone: React.PropTypes.func.isRequired
+    };
 
     handleToggleStatus = () => {
-        let {
-                id,
-                done,
-                onTaskDone,
-                onTaskUndone,
-            } = this.props;
+        let done,
+            id,
+            onTaskDone,
+            onTaskUndone;
+
+        ({
+            id,
+            done,
+            onTaskDone,
+            onTaskUndone
+        } = this.props);
 
         if (done) {
             onTaskUndone(id);
@@ -25,12 +30,14 @@ export default class extends React.Component {
     };
 
     render () {
-        let {
-                id,
-                name,
-                done
-            } = this.props,
-            componentClassName;
+        let componentClassName,
+            done,
+            name;
+
+        ({
+            name,
+            done
+        } = this.props);
 
         componentClassName = classNames('component-todo-item', {
             'status-done': done

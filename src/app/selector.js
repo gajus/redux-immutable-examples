@@ -2,14 +2,14 @@ import {
     createSelector
 } from 'reselect';
 
-import Immutable from 'immutable';
+// import Immutable from 'immutable';
 
-let taskSelector,
-    doneTaskSelector;
+let doneTaskSelector,
+    taskSelector;
 
-taskSelector = state => state.get('tasks');
+taskSelector = (state) => state.get('tasks');
 
-doneTaskSelector = createSelector([taskSelector], tasks => tasks.filter(task => task.get('done')));
+doneTaskSelector = createSelector([taskSelector], (tasks) => tasks.filter((task) => task.get('done')));
 
 export default (state) => {
     return {

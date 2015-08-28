@@ -8,7 +8,7 @@ import {
 } from 'redux-immutable';
 
 import thunk from 'redux-thunk';
-import logger from './middleware/logger'
+import logger from './middleware/logger';
 
 import * as reducers from './reducers';
 
@@ -17,8 +17,10 @@ import Immutable from 'immutable';
 import _ from 'lodash';
 
 let reducer,
-    store,
-    state = {};
+    state,
+    store;
+
+state = {};
 
 state.tasks = [
     {

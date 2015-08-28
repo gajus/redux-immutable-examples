@@ -2,12 +2,17 @@ import _ from 'lodash';
 
 import Immutable from 'immutable';
 
+let TASK_ADD,
+    TASK_DONE,
+    TASK_UNDONE;
+
 /**
  * @param {Immutable.List} domain
  * @param {Object} action
  * @param {String} action.data.name
+ * @return {Immutable.List}
  */
-export let TASK_ADD = (domain, action) => {
+TASK_ADD = (domain, action) => {
     return domain
         .push(Immutable.Map({
             id: _.uniqueId(),
@@ -20,28 +25,39 @@ export let TASK_ADD = (domain, action) => {
  * @param {Immutable.List} domain
  * @param {Object} action
  * @param {Number} action.data.id
+ * @return {Immutable.List}
  */
-export let TASK_DONE = (domain, action) => {
-    let i;
+TASK_DONE = (domain, action) => {
+    let index;
 
-    i = domain.findIndex(item => item.get('id') === action.data.id);
+    index = domain.findIndex((item) => item.get('id') === action.data.id);
 
-    return domain.update(i, (task) => {
-        return task.set('done', true);
-    });
+    return domain
+        .update(index, (task) => {
+            return task.set('done', true);
+        });
 };
 
 /**
  * @param {Immutable.List} domain
  * @param {Object} action
  * @param {Number} action.data.id
+ * @return {Immutable.List}
  */
-export let TASK_UNDONE = (domain, action) => {
-    let i;
+TASK_UNDONE = (domain, action) => {
+    let index;
 
-    i = domain.findIndex(item => item.get('id') === action.data.id);
+    index = domain
+        .findIndex((item) => item.get('id') === action.data.id);
 
-    return domain.update(i, (task) => {
-        return task.set('done', false);
-    });
+    return domain
+        .update(index, (task) => {
+            return task.set('done', false);
+        });
+};
+
+export {
+    TASK_ADD,
+    TASK_DONE,
+    TASK_UNDONE
 };

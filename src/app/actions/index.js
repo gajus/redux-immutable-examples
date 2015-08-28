@@ -1,20 +1,30 @@
-export let taskAdd = name => ({
+let taskAdd,
+    taskDone,
+    taskUndone;
+
+taskAdd = (name) => ({
     name: 'TASK_ADD',
     data: {
         name
     }
 });
 
-export let taskDone = id => ({
+taskDone = (id) => ({
     name: 'TASK_DONE',
     data: {
-        id: id
+        id
     }
 });
 
-export let taskUndone = id => ({
+taskUndone = (id) => ({
     name: 'TASK_UNDONE',
     data: {
-        id: id
+        id
     }
 });
+
+export {
+    taskAdd,
+    taskDone,
+    taskUndone
+};
