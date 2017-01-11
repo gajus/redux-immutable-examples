@@ -1,33 +1,30 @@
 import React from 'react';
-import TaskItem from './../TaskItem';
 import Immutable from 'immutable';
+import TaskItem from '../TaskItem';
 
 export default class extends React.Component {
-    static propTypes = {
-        tasks: React.PropTypes.instanceOf(Immutable.List).isRequired
-    };
+  static propTypes = {
+    tasks: React.PropTypes.instanceOf(Immutable.List).isRequired
+  };
 
-    render () {
-        let onTaskDone,
-            onTaskUndone,
-            tasks;
+  render () {
+    const {
+      tasks,
+      onTaskDone,
+      onTaskUndone
+    } = this.props;
 
-        ({
-            tasks,
-            onTaskDone,
-            onTaskUndone
-        } = this.props);
-
-        return <ul>{tasks.map((task) =>
-            <li key={task.get('id')}>
-                <TaskItem
-                    id={task.get('id')}
-                    name={task.get('name')}
-                    done={task.get('done')}
-                    onTaskDone={onTaskDone}
-                    onTaskUndone={onTaskUndone}
-                />
-            </li>)}
-        </ul>;
-    }
+    return <ul>{tasks.map((task) => {
+      return <li key={task.get('id')}>
+        <TaskItem
+          done={task.get('done')}
+          id={task.get('id')}
+          name={task.get('name')}
+          onTaskDone={onTaskDone}
+          onTaskUndone={onTaskUndone}
+        />
+      </li>;
+    })}
+    </ul>;
+  }
 }

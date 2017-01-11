@@ -1,2 +1,5 @@
-/* eslint-disable object-curly-spacing */
-export * as tasks from './tasks';
+import tasks from './tasks';
+
+export default {
+  tasks
+};

@@ -7,7 +7,6 @@ This app demonstrates:
 * How to make a selector using Immutable data.
 * How to use middleware.
 * How to use [react-hot-reload](https://github.com/gaearon/react-hot-loader).
-* How to structure app using [Canonical Reducer Composition](https://github.com/gajus/canonical-reducer-composition).
 
 To launch the app:
 
@@ -15,13 +14,5 @@ To launch the app:
 git clone git@github.com:gajus/redux-immutable-examples.git
 cd ./redux-immutable-examples
 npm install
-webpack-dev-server
-```
-
-## Contributing
-
-To contribute to the example use gulp to make sure that the end code passes the linting rules.
-
-```js
-gulp
+npm start
 ```

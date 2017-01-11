@@ -1,32 +1,23 @@
 import {
-    createStore,
-    applyMiddleware
+  createStore,
+  applyMiddleware
 } from 'redux';
-
 import {
-     combineReducers
+  combineReducers
 } from 'redux-immutable';
-
 import thunk from 'redux-thunk';
-import logger from './middleware/logger';
-
-import * as reducers from './reducers';
-
+import createLogger from 'redux-logger';
 import Immutable from 'immutable';
+import reducers from './reducers';
 
-import _ from 'lodash';
+const logger = createLogger();
 
-let reducer,
-    state,
-    store;
+const reducer = combineReducers(reducers);
 
-reducer = combineReducers(reducers);
-
-state = Immutable.Map({});
-state = reducer(state, {
-    name: `CONSTRUCT`
-});
-
-store = applyMiddleware(thunk, logger)(createStore)(reducer, state);
+const store = createStore(
+  reducer,
+  Immutable.Map({}),
+  applyMiddleware(thunk, logger)
+);
 
 export default store;

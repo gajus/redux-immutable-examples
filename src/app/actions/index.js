@@ -1,30 +1,32 @@
-let taskAdd,
-    taskDone,
-    taskUndone;
-
-taskAdd = (name) => ({
-    name: 'TASK_ADD',
+const taskAdd = (name) => {
+  return {
     data: {
-        name
-    }
-});
+      name
+    },
+    type: 'TASK_ADD'
+  };
+};
 
-taskDone = (id) => ({
-    name: 'TASK_DONE',
+const taskDone = (id) => {
+  return {
     data: {
-        id
-    }
-});
+      id
+    },
+    type: 'TASK_DONE'
+  };
+};
 
-taskUndone = (id) => ({
-    name: 'TASK_UNDONE',
+const taskUndone = (id) => {
+  return {
     data: {
-        id
-    }
-});
+      id
+    },
+    type: 'TASK_UNDONE'
+  };
+};
 
 export {
-    taskAdd,
-    taskDone,
-    taskUndone
+  taskAdd,
+  taskDone,
+  taskUndone
 };

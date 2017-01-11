@@ -1,26 +1,29 @@
 import React from 'react';
 
 export default class extends React.Component {
-    static propTypes = {
-        onSave: React.PropTypes.func.isRequired
-    };
+  static propTypes = {
+    onSave: React.PropTypes.func.isRequired
+  };
 
-    handleSubmit = (event) => {
-        let name;
+  handleSubmit = (event) => {
+    event.preventDefault();
 
-        event.preventDefault();
+    const name = this.textInput.value;
 
-        name = this.refs.name.value;
+    this.textInput.value = '';
 
-        this.refs.name.value = '';
+    this.props.onSave(name);
+  };
 
-        this.props.onSave(name);
-    };
-
-    render () {
-        return <form className='component-task-form' onSubmit={this.handleSubmit}>
-            <input type='text' ref='name' />
-            <button type='submit'>Save</button>
-        </form>;
-    }
+  render () {
+    return <form className='component-task-form' onSubmit={this.handleSubmit}>
+      <input
+        ref={(input) => {
+          this.textInput = input;
+        }}
+        type='text'
+      />
+      <button type='submit'>Save</button>
+    </form>;
+  }
 }

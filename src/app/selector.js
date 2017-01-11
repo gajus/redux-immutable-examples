@@ -1,20 +1,21 @@
 import {
-    createSelector
+  createSelector
 } from 'reselect';
 
-// import Immutable from 'immutable';
+const taskSelector = (state) => {
+  return state.get('tasks');
+};
 
-let doneTaskSelector,
-    taskSelector;
-
-taskSelector = (state) => state.get('tasks');
-
-doneTaskSelector = createSelector([taskSelector], (tasks) => tasks.filter((task) => task.get('done')));
+const doneTaskSelector = createSelector([taskSelector], (tasks) => {
+  return tasks.filter((task) => {
+    return task.get('done');
+  });
+});
 
 export default (state) => {
-    return {
-        tasks: taskSelector(state),
-        taskCount: taskSelector(state).count(),
-        doneTaskCount: doneTaskSelector(state).count()
-    };
+  return {
+    doneTaskCount: doneTaskSelector(state).count(),
+    taskCount: taskSelector(state).count(),
+    tasks: taskSelector(state)
+  };
 };
